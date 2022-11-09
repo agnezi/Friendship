@@ -11,7 +11,6 @@ struct UsersView: View {
 	
 	@Environment(\.managedObjectContext) var moc
 	@FetchRequest(sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]) var cachedUsers: FetchedResults<CachedUser>
-	
 	@State private var users = [User]()
 	
 	
@@ -29,9 +28,8 @@ struct UsersView: View {
 			.navigationTitle("Users")
 			.task {
 				
-				if users.isEmpty {
+				if users.isEmpty || cachedUsers.isEmpty {
 					await loadData()
-					print("Get data from API")
 				}
 			}
 		}
