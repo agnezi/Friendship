@@ -5,3 +5,10 @@
 //
 
 import Foundation
+
+struct Friend: Codable, Identifiable {
+	var id: UUID
+	var name: String
+	
+	static var sample = Friend(id: UUID(), name: "Test")
+}

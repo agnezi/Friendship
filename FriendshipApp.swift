@@ -10,9 +10,14 @@ import SwiftUI
 
 @main
 struct FriendshipApp: App {
-    var body: some Scene {
+  
+	@StateObject private var dataController = DataController()
+	
+	var body: some Scene {
         WindowGroup {
             ContentView()
+						.environment(\.managedObjectContext, dataController.container.viewContext)
+						.preferredColorScheme(.dark)
         }
     }
 }
